@@ -7,7 +7,7 @@ def instalar_dependencias():
     """
     try:
         # Lista de dependencias
-        dependencias = ["wxPython", "numpy", "pyvista", "numpy-stl"]
+        dependencias = ["wxPython", "numpy", "pyvista", "numpy-stl", "pyperclip"]
 
         # Instalar cada dependencia
         for paquete in dependencias:

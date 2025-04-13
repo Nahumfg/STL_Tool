@@ -85,7 +85,7 @@ class STLApp(wx.App):
         """
         correo = "excalibur_965@hotmail.com"
         mensaje_acerca = (
-            "Reescalador STL Moderno\n\n"
+            "Reescalador STL\n\n"
             "Versión: 1.0\n"
             "Desarrollado por: Nahum Flores\n\n"
             "Este programa permite trabajar con archivos STL, ofreciendo herramientas "
@@ -198,6 +198,8 @@ class STLApp(wx.App):
                 faces.extend([3, i * 3, i * 3 + 1, i * 3 + 2])
             faces = np.array(faces)
     
+            num_vertices = len(points)
+    
             mesh_data = pv.PolyData(points, faces)
             plotter = pv.Plotter()
             plotter.set_background("#333333")
@@ -219,9 +221,18 @@ class STLApp(wx.App):
                 f"    • Ancho: {ancho:.2f} mm\n"
                 f"    • Alto: {alto:.2f} mm\n"
                 f"    • Profundidad: {profundidad:.2f} mm\n\n"
-                f"📦 Volumen: {volumen:.2f} mm³\n"
-                f"🖋️ Área Total: {area_total:.2f} mm²\n"
+                f"  - Dimensiones (cm):\n"
+                f"    • Ancho: {ancho / 10:.2f} cm\n"
+                f"    • Alto: {alto / 10:.2f} cm\n"
+                f"    • Profundidad: {profundidad / 10:.2f} cm\n\n"
+                f"📏 Longitudes Totales:\n"
+                f"    • Eje X: {x_max - x_min:.2f} mm / {(x_max - x_min) / 10:.2f} cm\n"
+                f"    • Eje Y: {y_max - y_min:.2f} mm / {(y_max - y_min) / 10:.2f} cm\n"
+                f"    • Eje Z: {z_max - z_min:.2f} mm / {(z_max - z_min) / 10:.2f} cm\n\n"
+                f"📦 Volumen: {volumen:.2f} mm³ / {volumen / 1000:.2f} cm³\n"
+                f"🖋️ Área Total: {area_total:.2f} mm² / {area_total / 100:.2f} cm²\n"
                 f"🔺 Triángulos: {num_triangles}\n"
+                f"🔷 Vértices: {num_vertices}\n"
             )
             plotter.add_text(info_panel, position="upper_left", font_size=10)
     

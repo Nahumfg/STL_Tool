@@ -2,6 +2,8 @@ import wx
 from stl import mesh
 import pyvista as pv
 import numpy as np
+import pyperclip  # Necesario para copiar al portapapeles de manera sencilla (asegúrate de instalarlo)
+
 
 class STLApp(wx.App):
     def OnInit(self):
@@ -13,7 +15,25 @@ class STLApp(wx.App):
         title = wx.StaticText(self.panel, label="Reescalador de Modelos 3D", pos=(20, 20))
         title_font = wx.Font(14, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
         title.SetFont(title_font)
-
+        
+        # Crear barra de menú
+        menu_bar = wx.MenuBar()
+    
+        # Crear barra de menú
+        menu_bar = wx.MenuBar()
+        
+        # Menú de ayuda
+        menu_ayuda = wx.Menu()
+        #item_ayuda = menu_ayuda.Append(wx.ID_HELP, "Ayuda")
+        item_acerca = menu_ayuda.Append(wx.ID_ABOUT, "Acerca de")
+        menu_bar.Append(menu_ayuda, "Ayuda")
+        
+        self.frame.SetMenuBar(menu_bar)
+        
+        # Asignar eventos
+        #self.frame.Bind(wx.EVT_MENU, self.mostrar_acerca, item_ayuda)
+        self.frame.Bind(wx.EVT_MENU, self.mostrar_acerca, item_acerca)
+        
         # Botón para seleccionar archivo STL
         wx.StaticText(self.panel, label="Selecciona un archivo STL:", pos=(20, 80))
         select_btn = wx.Button(self.panel, label="Seleccionar", pos=(220, 75), size=(150, 30))
@@ -47,12 +67,46 @@ class STLApp(wx.App):
         save_btn.SetForegroundColour("white")
         save_btn.Bind(wx.EVT_BUTTON, self.guardar_archivo)
         
+        
+        
         # Checkbox para activar/desactivar la transparencia
         self.transparent_checkbox = wx.CheckBox(self.panel, label="Mostrar Transparencias", pos=(20, 260))
         self.transparent_checkbox.Bind(wx.EVT_CHECKBOX, self.toggle_transparency)
         
+        
         self.frame.Show()
         return True
+        
+        
+
+    def mostrar_acerca(self, event):
+        """
+        Muestra información sobre el programa y copia el correo al portapapeles.
+        """
+        correo = "excalibur_965@hotmail.com"
+        mensaje_acerca = (
+            "Reescalador STL Moderno\n\n"
+            "Versión: 1.0\n"
+            "Desarrollado por: Nahum Flores\n\n"
+            "Este programa permite trabajar con archivos STL, ofreciendo herramientas "
+            "para reescalar, visualizar y guardar modelos 3D. \nDiseñado con wxPython "
+            "y PyVista.\n"
+            f"Correo del desarrollador: {correo}\n\n"
+            "Nota: El correo se ha copiado automáticamente al portapapeles."
+        )
+        
+        # Copiar el correo al portapapeles
+        try:
+            pyperclip.copy(correo)
+            aviso = "El correo del desarrollador ha sido copiado al portapapeles."
+        except Exception as e:
+            aviso = f"No se pudo copiar el correo al portapapeles: {e}"
+        
+        # Mostrar el mensaje "Acerca de" con la nota
+        wx.MessageBox(mensaje_acerca, "Acerca de", wx.OK | wx.ICON_INFORMATION)
+        wx.MessageBox(aviso, "Información", wx.OK | wx.ICON_INFORMATION)
+        
+    
     def toggle_transparency(self, event):
         """
         Activa o desactiva la transparencia para el modelo.

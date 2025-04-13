@@ -31,7 +31,7 @@ Instalación
 -----------
 1. Asegúrate de que Python esté instalado en tu sistema.
 2. Instala las dependencias ejecutando el siguiente comando en tu terminal:
-3. Guarda el código fuente en un archivo llamado `reescalador_stl.py`.
+3. Guarda el código fuente en un archivo llamado `lectorSTL.py`.
 
 Ejecutar el programa
 --------------------

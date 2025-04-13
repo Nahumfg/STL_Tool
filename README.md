@@ -45,7 +45,7 @@ O bien, simplemente ejecuta el archivo `.exe` proporcionado para una experiencia
 Nota importante sobre el ejecutable
 -----------------------------------
 - Algunos antivirus pueden marcar el archivo ejecutable (.exe) como sospechoso, debido a la manera en que se empaquetan los recursos. Esto no significa que el archivo sea dañino.
-- Asegúrate de descargar el ejecutable desde una fuente confiable (por ejemplo, directamente de ti como desarrollador).
+- Asegúrate de descargar el ejecutable desde una fuente confiable (por ejemplo, directamente de la página del desarrollador).
 - Si el antivirus detecta una alerta, permite manualmente su ejecución añadiendo el archivo a la lista de excepciones de tu antivirus.
 
 Uso

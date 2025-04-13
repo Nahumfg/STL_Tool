@@ -86,7 +86,7 @@ class STLApp(wx.App):
         correo = "excalibur_965@hotmail.com"
         mensaje_acerca = (
             "Reescalador STL\n\n"
-            "Versión: 1.0\n"
+            "Versión: 1.0.1\n"
             "Desarrollado por: Nahum Flores\n\n"
             "Este programa permite trabajar con archivos STL, ofreciendo herramientas "
             "para reescalar, visualizar y guardar modelos 3D. \nDiseñado con wxPython "
